@@ -17,7 +17,7 @@ FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
-      FB.api('/me/picture', function (response) {
+      FB.api('/me/picture?type=normal', function (response) {
 		  $('#UserImg').html("<h5>Here are your profile photo</h5><img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
       });
     //呼叫api把圖片放到#preview IMG tag 內
