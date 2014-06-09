@@ -21,9 +21,7 @@ FB.getLoginStatus(function(response) {
 		  $('#UserImg').html("<h5>Here are your profile photo</h5><img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
       });
 	  FB.api("/me/picture/likes",function (response) {
-	        if (response && !response.error) {
-				$('#preview1').add("<p>"+response.total_count+"people liked this picture</p>");
-	        }
+		  $('#UserImg').append("<p>"+response.total_count+"people liked this picture</p>");
 	  });
     //呼叫api把圖片放到#preview IMG tag 內
     
@@ -34,7 +32,7 @@ FB.getLoginStatus(function(response) {
               window.location.reload();
           };
       }, {
-          scope: 'user_photos,publish_actions'
+          scope: 'user_about_me,email,user_location,user_photos,publish_actions,user_birthday,user_likes'
       });
 	//要求使用者登入，索取publish_actions權限
 	
