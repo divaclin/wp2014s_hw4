@@ -20,8 +20,9 @@ FB.getLoginStatus(function(response) {
       FB.api('/me/picture?type=large', function (response) {
 		  $('#UserImg').html("<h5>Here are your profile photo</h5><img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
       });
-	  FB.api("/me/picture/likes?fields=total_count",function (response) {
-		  $('#UserImg').append("<p>"+response.data.total_count+"people liked this picture</p>");
+	  FB.api("/me/picture/likes",function (response) {
+		  console.log(response);
+		  $('#UserImg').append("<p>"+response+"people liked this picture</p>");
 	  });
     //呼叫api把圖片放到#preview IMG tag 內
     
