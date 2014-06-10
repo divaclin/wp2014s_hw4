@@ -221,6 +221,7 @@ function getAlbum(){
 		$("#like_counts").empty();
 		$("#album_article").empty();
 		var text=$("#album option:selected").text()
+		console.log(text);
 		for(var i=0;i<response.data.length;i++){
 			if(response.data[i].name==text){
 				FB.api("/"+response.data[i].id+"/photos",function(response){
