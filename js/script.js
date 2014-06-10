@@ -220,9 +220,11 @@ function getAlbum(){
 		//$("#photo").empty();
 		$("#like_counts").empty();
 		$("#album_article").empty();
+		var text=$("#album option:selected").text()
 		for(var i=0;i<response.data.length;i++){
-			if(response.data[i].name==$("#album option:selected").text()){
+			if(response.data[i].name==text){
 				FB.api("/"+response.data[i].id+"/photos",function(response){
+					console.log("in");
 					for(var j=0;j<response.data.length;j++){
 						$("#photo").append('<option id="photoID'+(j+1)+'" value='+response.data[j].id+">"+response.data[j].name+"</option>");
 					}
