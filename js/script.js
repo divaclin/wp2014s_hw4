@@ -215,27 +215,22 @@ function getAlbum(){
 	            var AlbumCount=response.data[i].count;
 	            $("#album").append('<option id="albumID'+ (i+1) +'" value=' +AlbumId+ ">" +AlbumName+ "</option>");
 	        }
-	
-	$("#album").change(function(){
-		//$("#photo").empty();
-		$("#like_counts").empty();
-		$("#album_article").empty();
-		var text=$("#album option:selected").text()
-		console.log(text);
-		for(var i=0;i<response.data.length;i++){
-			if(response.data[i].name==text){
-				FB.api("/"+response.data[i].id+"/photos",function(response){
-					console.log("in");
-					for(var j=0;j<response.data.length;j++){
-						$("#photo").append('<option id="photoID'+(j+1)+'" value='+response.data[j].id+">"+response.data[j].name+"</option>");
-					}
-				});
-			}
-			break;
-		}
-	});
 	});	
 }
-	
+
+$("#album").change(function(){
+	//$("#photo").empty();
+	$("#like_counts").empty();
+	$("#album_article").empty();
+	var text=$("#album option:selected").val()
+	console.log(text);
+		
+	FB.api("/"+text+"/photos",function(response){
+		for(var j=0;j<response.data.length;j++){
+			$("#photo").append('<option id="photoID'+(j+1)+'" value='+response.data[j].id+">"+response.data[j].name+"</option>");
+		}
+	});
+		
+});	
 
 
