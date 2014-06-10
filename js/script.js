@@ -22,7 +22,7 @@ FB.getLoginStatus(function(response) {
       });
 	  FB.api("/me/picture/likes",function (response) {
 		  console.log(response);
-		  $('#UserImg').append("<p>"+response+"people liked this picture</p>");
+		  $('#UserImg').append("<p>"+response.data.total_count+"people liked this picture</p>");
 	  });
     //呼叫api把圖片放到#preview IMG tag 內
     
@@ -57,7 +57,7 @@ FB.getLoginStatus(function(response) {
     var img = new Image(); // 新增圖像1
     img.src = "img/overlay.png"; //圖像路徑（路徑自己設，且自己加入想要的圖層）
 	var img2 = new Image(); //新增圖像2
-	img2.src = "img/horse.png" //圖像路徑
+	img2.src = $("#pattern option:selected").val(); //圖像路徑
 	var img3 = new Image();//新增圖像3
 	img3.src = "img/board.png"//圖像路徑
 	
