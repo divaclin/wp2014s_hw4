@@ -217,7 +217,7 @@ function getAlbum(){
 	        }
 	
 	$("#album").change(function(){
-		$("#photo").empty();
+		//$("#photo").empty();
 		$("#like_counts").empty();
 		$("#album_article").empty();
 		for(var i=0;i<response.data.length;i++){
