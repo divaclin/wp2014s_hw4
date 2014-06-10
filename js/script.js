@@ -1,7 +1,5 @@
 // JavaScript Document
 
-
-
 window.fbAsyncInit = function () {//facebook init
     FB.init({
       appId      : '253199654885108',
@@ -232,6 +230,7 @@ function getAlbum(){
 			}
 			break;
 		}
+	});
 	});	
 }
 	
