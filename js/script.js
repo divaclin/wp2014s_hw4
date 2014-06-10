@@ -22,7 +22,7 @@ FB.getLoginStatus(function(response) {
       });
 	  FB.api("/me/picture/likes",function (response) {
 		  console.log(response);
-		  $('#UserImg').append("<p>"+response.data.total_count+"people liked this picture</p>");
+		  $('#UserImg').append("<p>"+response.data.count+"people liked this picture</p>");
 	  });
     //呼叫api把圖片放到#preview IMG tag 內
     
@@ -208,6 +208,32 @@ function dataURItoBlob(dataURI) {
     });
 }
 
-
+function getAlbum(){
+	$("#albumGet").remove();
+	FB.api("/me/albums?fields=id,name,count",function(response){
+	        for(var i=0;i<response.data.length;i++){
+	            var AlbumId=response.data[i].id;
+	            var AlbumName=response.data[i].name;
+	            var AlbumCount=response.data[i].count;
+	            $("#album").append('<option id="albumID'+ (i+1) +'" value=' +AlbumId+ ">" +AlbumName+ "</option>");
+	        }
+	
+	$("#album").change(function(){
+		$("#photo").empty();
+		$("#like_counts").empty();
+		$("#album_article").empty();
+		for(var i=0;i<response.data.length;i++){
+			if(response.data[i].name==$("#album option:selected").text()){
+				FB.api("/"+response.data[i].id+"/photos",function(response){
+					for(var j=0;j<response.data.length;j++){
+						$("#photo").append('<option id="photoID'+(j+1)+'" value='+response.data[j].id+">"+response.data[j].name+"</option>");
+					}
+				});
+			}
+			break;
+		}
+	});	
+}
+	
 
 
