@@ -219,18 +219,22 @@ function getAlbum(){
 }
 
 $("#album").change(function(){
-	//$("#photo").empty();
+	$("#photo").empty();
 	$("#like_counts").empty();
 	$("#album_article").empty();
 	var text=$("#album option:selected").val()
-	console.log(text);
 		
 	FB.api("/"+text+"/photos",function(response){
 		for(var j=0;j<response.data.length;j++){
-			$("#photo").append('<option id="photoID'+(j+1)+'" value='+response.data[j].id+">"+response.data[j].name+"</option>");
+			$("#photo").append('<option id="photoID'+(j+1)+'"  value='+response.data[j].url+">"+response.data[j].name+"</option>");
 		}
-	});
-		
-});	
-
+	});		
+});
+	
+$("#photo").change(function(){
+	$("#like_counts").empty();
+	$("#album_article").empty();
+	var imgUrl=$("#photo option:selected").val();
+	$("#preview1").attr("src",imgUrl);
+});
 
