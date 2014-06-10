@@ -226,7 +226,7 @@ $("#album").change(function(){
 		
 	FB.api("/"+text+"/photos",function(response){
 		for(var j=0;j<response.data.length;j++){
-			$("#photo").append('<option id="photoID'+(j+1)+'"  value='+response.data[j].link+">"+response.data[j].name+"</option>");
+			$("#photo").append('<option id="photoID'+(j+1)+'"  value='+response.data[j].source+">"+response.data[j].name+"</option>");
 		}
 	});		
 });
